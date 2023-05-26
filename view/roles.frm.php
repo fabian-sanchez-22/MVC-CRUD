@@ -33,14 +33,7 @@
                     <th scope="col">Opciones</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                </tr>
-            </tbody>
+            <tbody id="tableBodyRol"></tbody>
         </table>
     </div>
 </div>
