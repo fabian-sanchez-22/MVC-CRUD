@@ -37,7 +37,7 @@ function read(){
         </div>
                     </td>`;
             table += `<td>
-                     <a class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updateModal">Modificar</a>
+                     <a onclick="readUpdate(${element.id})" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updateModal" >Modificar</a>
                      <a class="btn btn-danger">Eliminar</a>
                      </td>`;
             table += `</tr>`;
@@ -72,6 +72,15 @@ function read(){
     console.log(data)
     read();
     })
+    }
+
+    function readUpdate(id){
+        fetch (`..controller/rol.readupdate.php?id=${id}`)
+        .then((response) => response.json())
+        .then ((data) => {
+        console.log(data)
+        console.log(Hola)
+        });
     }
     
 read();
