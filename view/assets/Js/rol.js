@@ -24,7 +24,7 @@ function read(){
     .then ((data) => {
         console.log(data);
 
-        let table = ''
+        let table = "";
     
         data.forEach((element, index) => {
             table += `<tr>`
@@ -37,7 +37,7 @@ function read(){
         </div>
                     </td>`;
             table += `<td>
-                     <a class="btn btn-warning">Modificar</a>
+                     <a class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updateModal">Modificar</a>
                      <a class="btn btn-danger">Eliminar</a>
                      </td>`;
             table += `</tr>`;
