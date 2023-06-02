@@ -40,7 +40,7 @@ function read(){
                     </td>`;
             table += `<td>
                      <a onclick="readUpdate(${element.id})" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updateModal" >Modificar</a>
-                     <a class="btn btn-danger">Eliminar</a>
+                     <a class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#deleteModal">Eliminar</a>
                      </td>`;
             table += `</tr>`;
         });
