@@ -64,7 +64,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerar</button>
-                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Modificar</button>
+                    <button onclick="update()" type="button" class="btn btn-warning " data-bs-dismiss="modal">Modificar</button>
                 </div>
             </div>
         </div>

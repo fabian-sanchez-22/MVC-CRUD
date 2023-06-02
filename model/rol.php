@@ -42,6 +42,18 @@ class Rol
         }
     }
 
+    public function update(){
+    try {
+        $sql = $this->conexion->getConPDO()->prepare("UPDATE roles SET nombreRol=? WHERE id =?");
+        $sql->bindParam(1, $this->nombreRol);
+        $sql->bindParam(2, $this->id);
+        $sql->execute();
+        return "Rol Modificado";
+    } catch (PDOException $e) {
+        return "Error" . $e->getMessage();
+    }
+    }
+
     public function estado(){
     try {
         $sql = $this->conexion->getConPDO()->prepare("UPDATE roles SET estado=? WHERE id=?");
@@ -52,6 +64,20 @@ class Rol
     } catch (PDOException $e) {
         return "Error " . $e->getMessage();
     }
+    }
+
+
+    public function readUpdate(){
+    
+        try {
+            $sql = $this->conexion->getConPDO()->prepare("SELECT * FROM roles WHERE id=?");
+            $sql->bindParam(1, $this->id);
+            $sql->execute();
+            $result = $sql->fetchAll(\PDO::FETCH_ASSOC);
+            return $result;
+        } catch (PDOException $e) {
+            return "Error: " .$e->getMessage();
+        }
     }
 
 

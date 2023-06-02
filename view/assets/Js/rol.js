@@ -1,3 +1,5 @@
+var id;
+
 function create(){
   let data = `txtRol=${document.getElementById('txtRol').value}`
   
@@ -47,6 +49,25 @@ function read(){
     });
     }
 
+    function update (){
+    let data = `txtRolMod=${txtRolMod.value}&id=${this.id}`
+        const options = {
+        method: "POST",
+        body: data,
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+        },
+        }
+    fetch("../controller/rol.update.php", options)
+    .then((response) => response.json())
+    .then((data) => {
+    console.log(data);
+    read();
+    });
+    }
+
+
+
     function readEstado(){
         let estado = document.getElementsByClassName("form-check-input");
         let labelEstado = document.getElementsByClassName("form-check-label");
@@ -57,6 +78,8 @@ function read(){
         }
     }
 
+
+
     function updateEstado(id, estado){
         const options ={
             method: "POST",
@@ -65,7 +88,6 @@ function read(){
                 "Content-Type": "application/x-www-form-urlencoded",
             },
         }
-
     fetch("../controller/rol.updateEstado.php", options)
     .then(response => response.json())
     .then((data) => {
@@ -74,12 +96,18 @@ function read(){
     })
     }
 
+
+
     function readUpdate(id){
-        fetch (`..controller/rol.readupdate.php?id=${id}`)
+        fetch (`../controller/rol.readupdate.php?id=${id}`)
         .then((response) => response.json())
         .then ((data) => {
         console.log(data)
-        console.log(Hola)
+        // document.getElementById("txtRolMod").value = data[0].nombreRol;
+        txtRolMod.value = data[0].nombreRol;
+
+        // Alimentando la variable global
+        this.id = data[0].id;
         });
     }
     
