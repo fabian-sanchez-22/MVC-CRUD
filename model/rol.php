@@ -54,6 +54,17 @@ class Rol
     }
     }
 
+    public function delete(){
+    try {
+        $sql = $this->conexion->getConPDO()->prepare("DELETE FROM roles WHERE id=?");
+        $sql->bindParam(1, $this->id);
+        $sql->execute();
+        return "Rol Eliminado";
+    } catch (PDOException $e) {
+        return "Error" . $e->getMessage();
+    }
+    }
+
     public function estado(){
     try {
         $sql = $this->conexion->getConPDO()->prepare("UPDATE roles SET estado=? WHERE id=?");

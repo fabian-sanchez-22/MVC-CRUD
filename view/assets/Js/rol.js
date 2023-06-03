@@ -1,23 +1,23 @@
 var id;
 
 function create(){
-  let data = `txtRol=${document.getElementById('txtRol').value}`
-  
-  const options = {
-  method:'POST',
-  body: data,
-  headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-  },
-  
-  };
-  
-      fetch("../controller/roles.create.php", options)
-      .then(response => response.json())
-      .then((data) => {
+let data = `txtRol=${document.getElementById('txtRol').value}`
+
+const options = {
+method:'POST',
+body: data,
+headers: {
+"Content-Type": "application/x-www-form-urlencoded",
+},
+
+};
+
+    fetch("../controller/roles.create.php", options)
+    .then(response => response.json())
+    .then((data) => {
         console.log(data);
         read();
-      })  
+    })  
 }
 
 function read(){
@@ -39,9 +39,9 @@ function read(){
         </div>
                     </td>`;
             table += `<td>
-                     <a onclick="readUpdate(${element.id})" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updateModal" >Modificar</a>
-                     <a class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#deleteModal">Eliminar</a>
-                     </td>`;
+                        <a onclick="readUpdate(${element.id})" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updateModal" >Modificar</a>
+                        <a onclick="readDelete(${element.id},'${element.nombreRol}')" class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#deleteModal">Eliminar</a>
+                        </td>`;
             table += `</tr>`;
         });
         document.getElementById("tableBodyRol").innerHTML = table;
@@ -66,6 +66,22 @@ function read(){
     });
     }
 
+    function deletes() {
+        let data = `id=${id}`;
+        const options = {
+        method: "POST",
+        body: data,
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+        },
+        }
+    fetch("../controller/rol.delete.php", options)
+    .then((response) => response.json())
+    .then((data) => {
+    console.log(data);
+    read();
+    });
+    }
 
 
     function readEstado(){
@@ -109,6 +125,11 @@ function read(){
         // Alimentando la variable global
         this.id = data[0].id;
         });
+    }
+
+    function readDelete(id, nombreRol){
+    this.id = id;
+        labelDelete.innerHTML = `Esta seguro de eliminar el Rol? ${nombreRol}`;
     }
     
 read();
