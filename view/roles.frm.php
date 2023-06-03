@@ -16,7 +16,7 @@
     </div>
 
     <div class="col-3 d-flex align-items-center">
-        <a onclick="create()" class="btn btn-primary">Crear</a>
+        <a onclick="create()" class="btn btn-primary mb-3"><i class="fa-brands fa-creative-commons-by fa-bounce me-1"></i>Crear</a>
     </div>
 
 </div>
@@ -24,7 +24,7 @@
 <div class="row mt-5 justify-content-center ">
     <h1 class="text-white text-center bg-dark ">Tabla de roles</h1>
     <div class="col-8">
-        <table class="table">
+        <table class="table" id="tableRol">
             <thead>
                 <tr>
                     <th scope="col">#</th>

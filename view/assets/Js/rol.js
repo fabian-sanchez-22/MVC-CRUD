@@ -9,13 +9,11 @@ body: data,
 headers: {
 "Content-Type": "application/x-www-form-urlencoded",
 },
-
 };
-
     fetch("../controller/roles.create.php", options)
     .then(response => response.json())
     .then((data) => {
-        console.log(data);
+        alertify.success(data);
         read();
     })  
 }
@@ -39,12 +37,19 @@ function read(){
         </div>
                     </td>`;
             table += `<td>
-                        <a onclick="readUpdate(${element.id})" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updateModal" >Modificar</a>
-                        <a onclick="readDelete(${element.id},'${element.nombreRol}')" class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#deleteModal">Eliminar</a>
+                        <a onclick="readUpdate(${element.id})" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updateModal" ><i class="fa-solid fa-square-pen fa-flip"></i></a>
+                        <a onclick="readDelete(${element.id},'${element.nombreRol}')" class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#deleteModal"><i class="fa-solid fa-trash fa-beat"></i></a>
                         </td>`;
             table += `</tr>`;
         });
         document.getElementById("tableBodyRol").innerHTML = table;
+        new DataTable("#tableRol",{
+        language: {
+        url: "./assets/json/es-ES.json",
+        },
+        dom: "Bfrtip",
+        buttons: ["pdf" , "excel" , "print" , "copy" , "colvis"],
+        });
         readEstado();
     });
     }
@@ -61,7 +66,7 @@ function read(){
     fetch("../controller/rol.update.php", options)
     .then((response) => response.json())
     .then((data) => {
-    console.log(data);
+        alertify.success(data);
     read();
     });
     }
@@ -78,7 +83,7 @@ function read(){
     fetch("../controller/rol.delete.php", options)
     .then((response) => response.json())
     .then((data) => {
-    console.log(data);
+        alertify.success(data);
     read();
     });
     }

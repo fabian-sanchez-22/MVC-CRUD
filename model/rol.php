@@ -23,7 +23,7 @@ class Rol
             $request->bindParam(1, $this->nombreRol);
             $request->bindParam(2, $this->estado);
             $request->execute();
-            return "Rol creado";
+            return "Rol $this->nombreRol creado";
             
         } catch (PDOException $e) {
             return "Error: " . $e->getMessage();
@@ -48,7 +48,7 @@ class Rol
         $sql->bindParam(1, $this->nombreRol);
         $sql->bindParam(2, $this->id);
         $sql->execute();
-        return "Rol Modificado";
+        return "Rol $this->nombreRol Modificado";
     } catch (PDOException $e) {
         return "Error" . $e->getMessage();
     }
