@@ -5,12 +5,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Formulario de creacion de roles</title>
     <link rel="" href></link>
     <link  rel="stylesheet" href="./assets/css/bootstrap.css">
     <link  rel="stylesheet" href="./assets/css/alertify.css">
     <link  rel="stylesheet" href="./assets/css/all.css">
     <link  rel="stylesheet" href="./assets/css/datatables.css">
+    <link  rel="stylesheet" href="./assets/css/style.css"> 
     <script src="./assets/js/jquery-3.6.0.js"></script>
     <script src="./assets/js/bootstrap.js"></script>
     <script src="./assets/js/alertify.js"></script>

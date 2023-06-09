@@ -48,7 +48,58 @@ function read(){
         url: "./assets/json/es-ES.json",
         },
         dom: "Bfrtip",
-        buttons: ["pdf" , "excel" , "print" , "copy" , "colvis"],
+
+        //Personalizando los botones del dataTable
+        buttons: [
+            {
+                extend: "colvis",
+                text: '<i class="fa-solid fa-filter fa-fade"></i>',
+                tittleAttr: "Filtrar",
+                className: "filtrar" ,
+            }, 
+
+            {
+                extend: "excel" ,
+                text: '<i class="fa-solid fa-file-excel fa-beat"></i>',
+                tittleAttr: "Excel",
+                className: "excel" ,
+                exportOptions:{
+                    columns: [0, 1, 2],
+                },
+            }, 
+
+            {
+                extend: "print",
+                text: '<i class="fa-solid fa-print fa-beat"></i>',
+                tittleAttr: "Imprimir",
+                className: "imprimir" ,
+                exportOptions:{
+                    columns: [0, 1, 2],
+                },
+                
+            }, 
+            
+            {
+                extend: "copy",
+                text: '<i class="fa-solid fa-copy fa-beat"></i>',
+                tittleAttr: "Copiar",
+                className: "copiar" ,
+                exportOptions:{
+                    columns: [0, 1, 2],
+                },
+                
+            },
+        {
+            download: "open",
+            extend: "pdf",
+                text: '<i class="fa-solid fa-file-pdf fa-beat"></i>',
+                tittleAttr: "PDF",
+                className: "pdf" ,
+                exportOptions:{
+                    columns: [0, 1, 2],
+                },
+        },
+        ],
         });
         readEstado();
     });
