@@ -44,6 +44,7 @@ function read(){
         });
         document.getElementById("tableBodyRol").innerHTML = table;
         new DataTable("#tableRol",{
+        retrieve: true,
         language: {
         url: "./assets/json/es-ES.json",
         },
