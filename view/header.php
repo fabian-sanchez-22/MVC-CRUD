@@ -17,6 +17,7 @@
     <script src="./assets/js/alertify.js"></script>
     <script src="./assets/js/all.js"></script>
     <script src="./assets/js/datatables.js"></script>
+    <script src="./assets/js/axios.min.js"></script>
 
     <script src="./assets/Js/bootstrap.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
