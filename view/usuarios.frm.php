@@ -113,13 +113,12 @@
                 <option value="0" selected disabled>Seleccionar</option>
                 <option value="F">Femenino</option>
                 <option value="M">Masculino</option>
-                <option value="N/A">Prefiero no decirlo</option>
             </select>
             <label for="floatingInput">Estado</label>
         </div>
     </div>
 
-    <div class="col-1">
+    <div class="col-2">
         <span class="fw-bolder">Rol:</spam>
     </div>
     <div class="col-4">
@@ -133,6 +132,169 @@
 <div class="row mt-5 justify-content-center">
     <div class="col-4 d-grid gap-2">
         <a onclick="create()" class="btn btn-primary">Crear</a>
+    </div>
+</div>
+
+<div class="row mt-5 d-flex justify-content-center">
+    <h1 class="bg-dark py-1 text-center text-white">Tabla de usuarios</h1>
+    <div class="col-10">
+        <table class="table" id="tableUsuario">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Tipo Doc</th>
+                    <th scope="col">Ident.</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">correo</th>
+                    <th scope="col">Rol</th>
+                </tr>
+            </thead>
+            <tbody id="tableBodyUsuario"></tbody>
+        </table>
+    </div>
+</div>
+
+
+<!-- Modal Modificar -->
+<div>
+    <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header bg-gradient bg-warning">
+                    <h5 class="modal-title col-11 text-center ms-4 fs-5" id="updateModalLabel">Modificar Usuario</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+
+                    <div class="row">
+                        <div class="col-2">
+                            <span class="fw-bolder">Tipo Doc:</spam>
+                        </div>
+
+                        <div class="col-4">
+                            <div class="form-floating">
+                                <select name="selTipoDocMod" id="selTipoDoc" class="form-control">
+                                    <option value="0" selected disabled>Seleccionar</option>
+                                    <option value="CC">CC</option>
+                                    <option value="TI">TI</option>
+                                    <option value="NUIP">NUIP</option>
+                                </select>
+                                <label for="floatingInput">Tipo Doc</label>
+                            </div>
+                        </div>
+
+                        <div class="col-2">
+                            <span class="fw-bolder">Identificacion:</spam>
+                        </div>
+
+                        <div class="col-4">
+                            <div class="form-floating">
+                                <input type="number" name="txtIdentificacionMod" id="txtIdentificacionMod"
+                                    class="form-control" placeholder=".">
+                                <label for="floatingInput">Identificacion</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+
+                        <div class="col-2">
+                            <span class="fw-bolder">Nombre:</spam>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-floating">
+                                <input type="text" name="txtNombreMod" id="txtNombreMod" class="form-control"
+                                    placeholder=".">
+                                <label for="floatingInput">Nombre</label>
+                            </div>
+                        </div>
+
+                        <div class="col-2">
+                            <span class="fw-bolder">Apellido:</spam>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-floating">
+                                <input type="text" name="txtApellidoMod" id="txtApellidoMod" class="form-control"
+                                    placeholder=".">
+                                <label for="floatingInput">Apellido</label>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="row mt-3">
+                        <div class="col-2">
+                            <span class="fw-bolder">Correo:</spam>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-floating">
+                                <input type="email" name="txtCorreoMod" id="txtCorreoMod" class="form-control"
+                                    placeholder=".">
+                                <label for="floatingInput">Correo</label>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <span class="fw-bolder">Genero:</spam>
+                        </div>
+
+                        <div class="col-4">
+                            <div class="form-floating">
+                                <select name="selGeneroMod" id="selGeneroMod" class="form-control">
+                                    <option value="0" selected disabled>Seleccionar</option>
+                                    <option value="F">Femenino</option>
+                                    <option value="M">Masculino</option>
+                                </select>
+                                <label for="floatingInput">Estado</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+
+                        <div class="col-2">
+                            <span class="fw-bolder">Rol:</spam>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-floating">
+                                <select name="selRolMod" id="selRolMod" class="form-control"></select>
+                                <label for="floatingInput">Rol</label>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary">Modificar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Modal Eliminar-->
+<div>
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header bg-danger bg-gradient">
+                    <h1 class="modal-title col-11 text-center ms-4 fs-5" id="deleteModalLabel">Eliminar usuario</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary">Eliminar</button>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -159,4 +321,25 @@ se define el metodo en seguida del constructor public function create(){}
 volvemos a usuario.create.php, se retoma $usuarioM = setTipoDoc($tipoDoc); y se hace el json_encode
 vamos a la funcion create del modelo y hacemos la sentencia sql, los bindparam y el execute 
 luego vamos al js a la funcion select rol 
+
+se crea un row en el formulario para hacer la tabla de los usuarios
+copiamos del bootstrap la tabla
+vamos a la funcion read en JS para hacer: 
+axios.get("../controller/usuario.read.php")
+.then(function (response){
+console.log(response);
+})
+.catch(function(error){
+console.log(error);
+});
+vamos al controlador a crear el archivo usuario.read.php 
+vamos al modelo y creamos la funcion public function read()
+
+
+vamos a la funcion read en js y alimentamos la tabla dinamicamente 
+y ya se muestran 
+luego se crean los botones de modificar y eliminar en el js
+copiamos de bootstrap los modales para modificar y eliminar y los pegamos en este frm
+se ponen los id del modal en el js 
+agregamos los campos del frm al body del modal
 -->

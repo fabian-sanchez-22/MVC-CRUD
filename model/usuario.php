@@ -28,7 +28,7 @@ class Usuario
     {
 
         try {
-            $sql = $this->conexion->getConPDO()->prepare("INSERT INTO usuarios(id, tipoDoc, identificacion, nombre, correo, password, direccion, telefono, genero, idRol, estado) VALUES("?,?");
+            $sql = $this->conexion->getConPDO()->prepare("INSERT INTO usuarios(tipoDoc, identificacion, nombre, apellido, correo, password, direccion, telefono, genero, idRol, estado) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
             $sql->bindParam(1, $this->tipoDoc);
             $sql->bindParam(2, $this->identificacion);
             $sql->bindParam(3, $this->nombre);
@@ -46,10 +46,19 @@ class Usuario
         } catch (\PDOException $e) {
             return "Error  " . $e->getMessage();
         }
-
-
     }
 
+
+public function read(){
+try {
+    $sql = $this->conexion->getConPDO()->prepare("SELECT * FROM usuarios WHERE estado='A'");
+    $sql->execute();
+    $result = $sql->fetchAll(\PDO::FETCH_ASSOC);
+    return $result;
+} catch (\PDOException $e) {
+    return "Error" . $e->getMessage();
+}
+}
 
 
     /**
