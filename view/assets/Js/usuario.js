@@ -24,9 +24,9 @@ response.data.forEach((element, index) => {
     table += ` <td>${element.identificacion}</td>`;
     table += ` <td>${element.nombre} ${element.apellido}</td>`;
     table += ` <td>${element.correo}</td>`;
-    table += ` <td>${element.idRol}</td>`;
+    table += ` <td>${element.nombreRol}</td>`;
     table += ` <td>
-    <a class='btn btn-warning'><i class="fa-solid fa-square-pen fa-flip" data-bs-toggle="modal" data-bs-target="#updateModal"></i></a>
+    <a onclick='readUpdate(${element.id})' class='btn btn-warning'><i class="fa-solid fa-square-pen fa-flip" data-bs-toggle="modal" data-bs-target="#updateModal"></i></a>
     <a class='btn btn-danger'><i class="fa-solid fa-trash fa-beat" data-bs-toggle="modal" data-bs-target="#deleteModal"></i></a>
     </td>`;
     table += `<tr>`;
@@ -38,9 +38,22 @@ console.log(error);
 });
 }
 
+var id;
 function update(){
-
+let data= `id=${this.id}&tipoDoc=${selTipoDocMod.value}&identificacion=${txtIdentificacionMod.value}&nombre=${txtNombreMod.value}&apellido=${txtApellidoMod.value}&correo=${txtCorreoMod.value}&genero=${selGeneroMod.value}&rol=${selRolMod.value}`
+axios.post("../controller/usuario.update.php", data)
+.then(function(response){
+    console.log(response);
+    read();
+})
+.catch(function(error){
+    console.log(error);
+});
 }
+
+update();
+read();
+
 
 function deletes(){
 
@@ -60,6 +73,25 @@ selRol.innerHTML = roles;
 selRolMod.innerHTML = roles;
 })
 .catch(function(error){
+console.log(error);
+})
+}
+
+
+function readUpdate(id){
+axios.get(`../controller/usuario.readUpdate.php?id=${id}`)
+.then(function (response){
+selTipoDocMod.value = response.data[0].tipoDoc;
+txtIdentificacionMod.value = response.data[0].identificacion;
+txtNombreMod.value = response.data[0].nombre;
+txtApellidoMod.value = response.data[0].apellido;
+txtCorreoMod.value = response.data[0].correo;
+selGeneroMod.value = response.data[0].genero;
+selRolMod.value = response.data[0].idRol;
+
+this.id = response.data[0].id;
+})
+.catch(function (error){
 console.log(error);
 })
 }

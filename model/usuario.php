@@ -49,14 +49,47 @@ class Usuario
     }
 
 
-public function read(){
+    public function read()
+    {
+        try {
+            $sql = $this->conexion->getConPDO()->prepare("SELECT * FROM tablaUsuarios");
+            $sql->execute();
+            $result = $sql->fetchAll(\PDO::FETCH_ASSOC);
+            return $result;
+        } catch (\PDOException $e) {
+            return "Error" . $e->getMessage();
+        }
+    }
+
+    public function readUpdate()
+    {
+        try {
+            $sql = $this->conexion->getConPDO()->prepare("SELECT * FROM usuarios WHERE id=?");
+            $sql->bindParam(1, $this->id);
+            $sql->execute();
+            $result = $sql->fetchAll(\PDO::FETCH_ASSOC);
+            return $result;
+        } catch (\PDOException $e) {
+            return "error " . $e->getMessage();
+        }
+    }
+
+
+    public function update(){
 try {
-    $sql = $this->conexion->getConPDO()->prepare("SELECT * FROM usuarios WHERE estado='A'");
+    $sql = $this->conexion->getConPDO()->prepare("UPDATE usuarios SET tipoDoc=?, identificacion=?, nombre=?, apellido=?, correo=?, genero=?, idRol=? WHERE id=?");
+    $sql->bindParam(1, $this->tipoDoc);
+    $sql->bindParam(2, $this->identificacion);
+    $sql->bindParam(3, $this->nombre);
+    $sql->bindParam(4, $this->apellido);
+    $sql->bindParam(5, $this->correo);
+    $sql->bindParam(6, $this->genero);
+    $sql->bindParam(7, $this->rol);
+    $sql->bindParam(8, $this->id);
     $sql->execute();
-    $result = $sql->fetchAll(\PDO::FETCH_ASSOC);
-    return $result;
+    return "Usuario Modificado";
 } catch (\PDOException $e) {
-    return "Error" . $e->getMessage();
+    return "Error: " .$e->getMessage();
 }
 }
 

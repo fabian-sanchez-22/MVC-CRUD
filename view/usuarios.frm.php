@@ -114,7 +114,7 @@
                 <option value="F">Femenino</option>
                 <option value="M">Masculino</option>
             </select>
-            <label for="floatingInput">Estado</label>
+            <label for="floatingInput">Genero</label>
         </div>
     </div>
 
@@ -174,7 +174,7 @@
 
                         <div class="col-4">
                             <div class="form-floating">
-                                <select name="selTipoDocMod" id="selTipoDoc" class="form-control">
+                                <select name="selTipoDocMod" id="selTipoDocMod" class="form-control">
                                     <option value="0" selected disabled>Seleccionar</option>
                                     <option value="CC">CC</option>
                                     <option value="TI">TI</option>
@@ -246,7 +246,7 @@
                                     <option value="F">Femenino</option>
                                     <option value="M">Masculino</option>
                                 </select>
-                                <label for="floatingInput">Estado</label>
+                                <label for="floatingInput">Genero</label>
                             </div>
                         </div>
                     </div>
@@ -268,7 +268,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary">Modificar</button>
+                    <button onclick="update()" type="button" class="btn btn-warning" data-bs-dismiss="modal">Modificar</button>
                 </div>
             </div>
         </div>
@@ -342,4 +342,23 @@ luego se crean los botones de modificar y eliminar en el js
 copiamos de bootstrap los modales para modificar y eliminar y los pegamos en este frm
 se ponen los id del modal en el js 
 agregamos los campos del frm al body del modal
+
+agregamos el onclick al modal modificar 
+y creamos la funcion readUpdate en el usuario.js
+
+creamos el controlador usuaruo.readUpdate.php y todo su codigo
+
+vamos al modelo usuario.php y creamos la funcion readUpdate con la consulta sql 
+ya nos muestra por consola 
+
+y en la funcion readUpdate empezamos a insertar los valores con las lineas: 
+selTipoDocMod.selected = response.data[0].tipoDoc;
+se crea una vista en workbench para actualizar la tabla y que aparezca el nombre del rol 
+se llama la vista en la funcion read 
+creamos una variable global var id y la alimentamos debajo de readUpdate 
+
+asignamos la funcion update al boton de modificar y creamos la funcion update  
+
+creamos el controlador, usuarios.update.php
+volvemos al modelo usuario.php a crear la public function update 
 -->
