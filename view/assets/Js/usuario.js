@@ -6,6 +6,7 @@ function create(){
 axios.post('../controller/usuario.create.php', data)
 .then(function(response){
 console.log(response);
+read()
 })
 .catch(function(error){
 console.log(error);
@@ -26,8 +27,8 @@ response.data.forEach((element, index) => {
     table += ` <td>${element.correo}</td>`;
     table += ` <td>${element.nombreRol}</td>`;
     table += ` <td>
-    <a onclick='readUpdate(${element.id})' class='btn btn-warning'><i class="fa-solid fa-square-pen fa-flip" data-bs-toggle="modal" data-bs-target="#updateModal"></i></a>
-    <a class='btn btn-danger'><i class="fa-solid fa-trash fa-beat" data-bs-toggle="modal" data-bs-target="#deleteModal"></i></a>
+    <a onclick='readUpdate(${element.id})' class='btn btn-warning' data-bs-toggle="modal" data-bs-target="#updateModal"><i class="fa-solid fa-square-pen fa-flip"></i></a>
+    <a onclick="readDelete(${element.id}, '${element.nombre}')" class='btn btn-danger'><i class="fa-solid fa-trash fa-beat" data-bs-toggle="modal" data-bs-target="#deleteModal"></i></a>
     </td>`;
     table += `<tr>`;
 });
@@ -56,7 +57,15 @@ read();
 
 
 function deletes(){
-
+let data = `id=${this.id}`;
+axios.post("../controller/usuario.delete.php", data)
+.then(function(response){
+    console.log(response);
+})
+read()
+.catch(function(error){
+console.log(error);
+})
 }
 
 function selectRol(){
@@ -94,6 +103,11 @@ this.id = response.data[0].id;
 .catch(function (error){
 console.log(error);
 })
+}
+
+function readDelete(id, nombre){
+this.id = id;
+mensaje.innerHTML = `¿Está seguro de eliminar el usuario ${nombre} ?`
 }
 
 selectRol();

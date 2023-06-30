@@ -283,15 +283,15 @@
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header bg-danger bg-gradient">
-                    <h1 class="modal-title col-11 text-center ms-4 fs-5" id="deleteModalLabel">Eliminar usuario</h1>
+                    <h1 class="modal-title col-11 text-center ms-4 fs-5" id="deleteModalLabel" >Eliminar</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-
+                    <p id="mensaje"></p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary">Eliminar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button onclick="deletes()" type="button" class="btn btn-danger" data-bs-dismiss="modal">Eliminar</button>
                 </div>
             </div>
         </div>
@@ -361,4 +361,22 @@ asignamos la funcion update al boton de modificar y creamos la funcion update
 
 creamos el controlador, usuarios.update.php
 volvemos al modelo usuario.php a crear la public function update 
+
+vamos para el de eliminar
+creamos la funcion readDelete para imprimir el texto de eliminar interactivo y se pasan los parametros en el boton de eliminar
+
+en la funcion deletes hacemos el post al controller 
+se crea el controlador usuario.delete.php
+se crea la funcion delete en el modelo con la sentencia sql
+
+se crea el archivo admin .php en view, se hace la interfaz
+se linkea el script login.js y se crea la function login
+se crea el controlador login.create.php y se escribe 
+
+y se hacen estas lineas:
+if(isset($response) AND !empty($response)){
+$_SESSION["nombre"] = $response[0]["nombre"];
+$_SESSION[""];
+}
+
 -->
