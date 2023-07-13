@@ -113,7 +113,7 @@ class Usuario
     public function delete()
     {
         try {
-            $sql = $this->conexion->getConPDO()->prepare("UPDATE usuarios SET estado='I' WHERE id=?");
+            $sql = $this->conexion->getConPDO()->prepare("DELETE FROM usuarios WHERE id=?");
             $sql->bindParam(1, $this->id);
             $sql->execute();
             return "Usuario eliminado";
